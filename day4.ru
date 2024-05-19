@@ -1,7 +1,11 @@
+money = 0;
+
 def init()
     puts("Hello")
     $stdout.flush
-    puts("In this game, you are flying a spaceship, and you have to make desitions.")
+    puts("In this game, you are a lost astronaut flying a spaceship, and you have to make desitions.")
+    $stdout.flush
+    puts("Your goal is to get back to earth")
     $stdout.flush
     puts("Would you like to play? (y/n)")
     $stdout.flush
@@ -48,6 +52,9 @@ def game()
         planet = gets.chomp
         if planet == "y"
             puts("You landed on the planet and you found a treasure.")
+            $stdout.flush
+            money = money + 10
+            puts("You now have " + money + " Dubloons")
             continued1()
         else
             puts("You decided not to go to the planet and you continued flying.")
@@ -126,9 +133,10 @@ def continued3()
         if eject == "y"
             puts("You ejected and landed on the comet.")
             $stdout.flush
-            puts("You found a spaceship on the comet and you flew back to earth.")
+            puts("You found a mysterious seat on the comet, and you sat in it.")
             $stdout.flush
-            puts("You won the game!")
+            puts("The second you were fully seated, you saw time speed up all around you, and you realized that the comet was heading towards earth!")
+            won()
         else
             puts("You tried to regain control of your ship, but you crashed into the comet.")
             $stdout.flush
@@ -144,10 +152,44 @@ end
 
 def chase()
     #space chase storyline here
-    puts("")
+    puts("Whoosh! Bang! You have flown right into the middle of an army, chasing after a small read ship.")
+    $stdout.flush
+    puts("You can either join the ship in running away, or stay with the army and see what happens (j for join / s for stay)")
+    $stdout.flush
+    goodOrEvil = gets.chomp
+    if goodOrEvil == "j"
+        puts("You fly up to join the rebel spaceship, and the army, thinking that you are their friend, shoots you down, and you die. The end.")
+    else
+        puts("You stay with the army, and right before your eyes, you see the rebel ship get destroyed. As the ship's parts go flying, you see the glint of gold.")
+        $stdout.flush
+        puts("Do you grab the money? (y/n)")
+        $stdout.flush
+        grabmoney = gets.chomp
+        if grabmoney == "y"
+            puts("You grab the money")
+            $stdout.flush
+            money = money + 1
+            puts("You now have " + money + " Dubloons")
+            $stdout.flush
+            continued4()
+        else
+            puts("You are scared so you don't grab the money")
+            $stdout.flush
+            continued4()
+        end
+    end
 end
 
+continued4()
+    puts("hi")
+    $stdout.flush
+end
 
+def win()
+    puts("You reached earth, so you win!")
+    $stdout.flush
+    puts("You had " + money + " Dubloons")
+end
 
 
 init() # Call the init function to start the game
