@@ -1,5 +1,3 @@
-init() # Call the init function to start the game
-
 def init()
     puts("Hello")
     $stdout.flush
@@ -25,14 +23,14 @@ def init()
          name = gets.chomp
          puts("Hello " + name)
          $stdout.flush
-         game(name, age)
+         game()
       end
     else
       puts("bye")
     end
 end
 
-def game(name, age)
+def game()
     puts("You are flying a spaceship and you see an asteroid field.")
     $stdout.flush
     puts("Do you want to go through the asteroid field? (y/n)")
@@ -141,9 +139,15 @@ def continued3()
      $stdout.flush
      puts("The next thing you know, you in the middle of a space chase, straight out of you favorite movies!")
      chase()
+     end
 end
 
 def chase()
     #space chase storyline here
     puts("")
 end
+
+
+
+
+init() # Call the init function to start the game
