@@ -41,6 +41,8 @@ def game()
     input3 = gets.chomp
     if input3 == "y"
         puts("You went through the asteroid field and you died.")
+        $stdout.flush()
+        playAgain()
     else
         puts("You went around the asteroid field and you survived.")
         $stdout.flush()
@@ -70,6 +72,8 @@ def continued1()
     blackhole = gets.chomp
     if blackhole == "y"
         puts("You went to the black hole and you died.")
+        $stdout.flush()
+        playAgain()
     else
         puts("You decided not to go to the black hole and you continued flying.")
         $stdout.flush()
@@ -138,6 +142,8 @@ def continued3()
             puts("You tried to regain control of your ship, but you crashed into the comet.")
             $stdout.flush()
             puts("You died.")
+            $stdout.flush()
+            playAgain()
         end
     else
         puts("Suddenly, you hear a distress signal.")
@@ -156,6 +162,8 @@ def chase()
     goodOrEvil = gets.chomp
     if goodOrEvil == "j"
         puts("You fly up to join the rebel spaceship, and the army, thinking that you are their friend, shoots you down, and you die. The end.")
+        $stdout.flush()
+        playAgain()
     else
         puts("You stay with the army, and right before your eyes, you see the rebel ship get destroyed. As the ship's parts go flying, you see the glint of gold.")
         $stdout.flush()
@@ -186,6 +194,16 @@ def win()
     puts("You reached earth, so you win!")
     $stdout.flush()
     puts("You had " + @money.to_s + " Dubloons")
+end
+
+def playAgain()
+    $stdout.flush()
+    puts("Do you want to play again? (y/n)")
+    $stdout.flush()
+    playAgain = gets.chomp
+    if playAgain == "y"
+        init()
+    end
 end
 
 init() # Call the init function to start the game
