@@ -5,6 +5,8 @@ def init()
     $stdout.flush()
     puts("In this game, you are a lost astronaut flying a spaceship, and you have to make decisions.")
     $stdout.flush()
+    puts("This game was created by Eshaan Ahuja")
+    $stdout.flush()
     puts("Your goal is to get back to earth")
     $stdout.flush()
     puts("Would you like to play? (y/n)")
@@ -186,14 +188,94 @@ def chase()
 end
 
 def continued4()
-    puts("hi")
+    puts("You keep going and see the army's base in the distance.")
     $stdout.flush()
+    puts("Do you want to go to their base? (y/n)")
+    $stdout.flush()
+    base = gets.chomp
+    if base == "y"
+        puts("You went to the army's base and they gave you a reward for helping them.")
+        $stdout.flush()
+        @money += 5
+        puts("You now have " + @money.to_s + " Dubloons")
+        continued5()
+    else
+        puts("You decided not to go to the army's base and you continued flying.")
+        continued5()
+    end
+end
+
+def continued5
+    puts("With a new experience under your belt, you are feeling confident.")
+    $stdout.flush()
+    puts("As you fly, you see that you are running low on gas.")
+    $stdout.flush()
+    puts("You see a gas station in the distance. Do you want to go to the gas station? (y/n)")
+    $stdout.flush()
+    gas = gets.chomp
+    if gas == "y"
+        puts("You went to the gas station and filled up your tank.")
+        $stdout.flush()
+        @money -= 2
+        if @money < 0
+            puts("You don't have enough money to pay for the gas, so you are stuck at the gas station. The owner gets mad and kicks you out. You are now stranded in space, and you die.")
+            $stdout.flush()
+            playAgain()
+        else
+            puts("You now have " + @money.to_s + " Dubloons")
+            $stdout.flush()
+        end
+        continued6()
+    else
+        puts("You decided not to go to the gas station and you continued flying.")
+        $stdout.flush()
+        puts("You run out of gas and you are stranded in space. You die.")
+        playAgain()
+    end
+end
+
+def continued6()
+    print("With your tank full, you are ready to continue your journey.")
+    $stdout.flush()
+    puts("You see a wormhole in the distance.")
+    $stdout.flush()
+    puts("Do you want to go to the wormhole? (y/n)")
+    $stdout.flush()
+    wormhole = gets.chomp
+    if wormhole == "y"
+        puts("You went to the wormhole and you traveled back to earth. You win!")
+        $stdout.flush()
+        win()
+    else
+        puts("You decided not to go to the wormhole and you continued flying.")
+        $stdout.flush()
+        puts("Out of nowhere, you see a giant space monster!")
+        $stdout.flush()
+        puts("Do you want to fight the monster? (y/n)")
+        $stdout.flush()
+        fight = gets.chomp
+        if fight == "y"
+            puts("You fought the monster and you died.")
+            $stdout.flush()
+            playAgain()
+        else
+            puts("You ran from the monster, but it was too fast and it caught you.")
+            $stdout.flush()
+            puts("You died.")
+            $stdout.flush()
+            playAgain()
+        end
+    end
 end
 
 def win()
     puts("You reached earth, so you win!")
     $stdout.flush()
     puts("You had " + @money.to_s + " Dubloons")
+    $stdout.flush()
+    puts("Thanks for playing!")
+    $stdout.flush()
+    playAgain()
 end
 
 def playAgain()
